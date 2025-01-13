@@ -7,7 +7,7 @@ Type=simple
 User=ubuntu
 WorkingDirectory=/home/ubuntu/musicRecommenderBot
 Environment=PYTHONPATH=/home/ubuntu/musicRecommenderBot
-ExecStart=/home/ubuntu/musicRecommenderTeleBot/venv/bin/python bot.py
+ExecStart=/home/ubuntu/musicRecommenderBot/venv/bin/python bot.py
 Restart=always
 RestartSec=10
 
