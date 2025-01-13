@@ -7,8 +7,8 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install python3-pip python3-venv git -y
 
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/musicRecommenderTeleBot.git
-cd musicRecommenderTeleBot
+git clone https://github.com/apih99/musicRecommenderBot.git
+cd musicRecommenderBot
 
 # Create and activate virtual environment
 python3 -m venv venv
