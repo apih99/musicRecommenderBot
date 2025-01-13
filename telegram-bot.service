@@ -1,0 +1,15 @@
+[Unit]
+Description=Telegram Music Recommender Bot
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/musicRecommenderTeleBot
+Environment=PYTHONPATH=/home/ubuntu/musicRecommenderTeleBot
+ExecStart=/home/ubuntu/musicRecommenderTeleBot/venv/bin/python bot.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target 
