@@ -36,7 +36,7 @@ A Telegram bot that recommends random songs based on user-selected genres using 
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/musicRecommenderBot.git
+   git clone https://github.com/apih99/musicRecommenderBot.git
    cd musicRecommenderBot
    ```
 
@@ -84,7 +84,7 @@ python bot.py
 
 4. Run the setup script:
    ```bash
-   wget https://raw.githubusercontent.com/YOUR_USERNAME/musicRecommenderBot/main/setup.sh
+   wget https://raw.githubusercontent.com/apih99/musicRecommenderBot/main/setup.sh
    chmod +x setup.sh
    ./setup.sh
    ```
