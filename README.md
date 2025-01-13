@@ -119,13 +119,60 @@ sudo systemctl restart telegram-bot
 ```
 
 ### Updating the Bot
-To update the deployed bot:
+To update the deployed bot after pushing changes to Git:
+
+#### Manual Update
 ```bash
+# Connect to your EC2 instance
+ssh -i your-key.pem ubuntu@your-ec2-ip
+
+# Go to bot directory and update
 cd ~/musicRecommenderBot
 sudo systemctl stop telegram-bot
 git pull
 sudo systemctl start telegram-bot
 ```
+
+#### Automatic Updates (Optional)
+You can set up automatic updates using a cron job:
+
+1. Create an update script:
+   ```bash
+   nano ~/update-bot.sh
+   ```
+
+2. Add this content:
+   ```bash
+   #!/bin/bash
+   cd ~/musicRecommenderBot
+   git fetch
+   UPSTREAM=${1:-'@{u}'}
+   LOCAL=$(git rev-parse @)
+   REMOTE=$(git rev-parse "$UPSTREAM")
+
+   if [ $LOCAL != $REMOTE ]; then
+       echo "Updates found, updating bot..."
+       sudo systemctl stop telegram-bot
+       git pull
+       sudo systemctl start telegram-bot
+   else
+       echo "Bot is up to date"
+   fi
+   ```
+
+3. Make it executable:
+   ```bash
+   chmod +x ~/update-bot.sh
+   ```
+
+4. Add a cron job to check for updates every hour:
+   ```bash
+   crontab -e
+   ```
+   Add this line:
+   ```
+   0 * * * * /home/ubuntu/update-bot.sh >> /home/ubuntu/bot-updates.log 2>&1
+   ```
 
 ## Usage
 1. Start a chat with your bot on Telegram
